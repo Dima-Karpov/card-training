@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import s from './Login.module.css';
 import commonStyle from '../App/App.module.css';
 import styleButton from '../../ui/common/Button/Button.module.css';
@@ -21,6 +21,12 @@ type FormikErrorType = {
 export const Login: React.FC = React.memo(() => {
 
     const dispatch = useDispatch();
+
+    const [typeIcon, setTypeIcon] = useState<string>('password');
+
+    const showHide = () => {
+        setTypeIcon(typeIcon === 'text' ? 'password' : 'text')
+    };
 
     const formik = useFormik({
         initialValues: {
@@ -48,8 +54,6 @@ export const Login: React.FC = React.memo(() => {
         },
     });
 
-
-
     return (
         <div className={s.container}>
             <div className={s.form}>
@@ -62,10 +66,14 @@ export const Login: React.FC = React.memo(() => {
                     />
                     {formik.touched.email && formik.errors.email ? <div className={commonStyle.error}>{formik.errors.email}</div> : null}
                     <Input
-                        type={'password'}
-                        placeholder={'Password'}
+                        type={typeIcon}
+                        placeholder='Password'
                         {...formik.getFieldProps('password')}
                     />
+
+                    <span className={s.showHidePassword}
+                        onClick={showHide}>{typeIcon === 'text' ? '🔒' : '🔑'}</span>
+
                     {formik.touched.password && formik.errors.password ? <div className={commonStyle.error}>{formik.errors.password}</div> : null}
                     <label htmlFor='rememberMe'>Remember me</label>
                     <Checkbox
