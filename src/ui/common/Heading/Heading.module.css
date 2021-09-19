@@ -1,0 +1,10 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.h1{
+    font-family: 'Poppins', sans-serif;
+    size: 26px;
+}

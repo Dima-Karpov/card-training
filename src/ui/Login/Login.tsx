@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { loginTC } from './../../bll/reducer/auth-reducer';
 import { NavLink } from 'react-router-dom';
 import { PATH } from "../App/App";
+import { Heading } from "../common/Heading/Heading";
 
 type FormikErrorType = {
     email?: string
@@ -52,10 +53,7 @@ export const Login: React.FC = React.memo(() => {
     return (
         <div className={s.container}>
             <div className={s.form}>
-                <div className={s.content}>
-                    <h1 className={commonStyle.h1}>It-incubator</h1>
-                    <h2>Sing In</h2>
-                </div>
+                <Heading name='Sing In' />
                 <form className={s.content} onSubmit={formik.handleSubmit}>
                     <Input
                         type='email'
@@ -91,4 +89,5 @@ export const Login: React.FC = React.memo(() => {
 
     )
 });
+
 
