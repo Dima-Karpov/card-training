@@ -26,3 +26,23 @@
     justify-content: space-between;
     height: 120px;
 }
+
+.forgotLink {
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    color: #232480;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 2%;
+}
+
+.singLink{
+    color: #232480;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

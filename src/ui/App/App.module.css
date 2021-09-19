@@ -9,3 +9,7 @@
     font-family: 'Poppins', sans-serif;
     size: 26px;
 }
+
+.error {
+    color: red;
+}
