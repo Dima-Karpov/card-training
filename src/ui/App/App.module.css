@@ -1,0 +1,11 @@
+.app{
+    min-height: 100vh;
+    background: linear-gradient(180deg, #E6D4DE 0%, #9890C7 100%);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.h1{
+    font-family: 'Poppins', sans-serif;
+    size: 26px;
+}

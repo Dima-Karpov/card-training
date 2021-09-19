@@ -1,0 +1,14 @@
+.linkButton{
+    width: 173px;
+    height: 60px;
+    background: #DCCCDB;
+}
+.line{
+    position: absolute;
+    opacity: 0;
+    bottom: 0;
+    display: block;
+    background-color: #21268f;
+    width: 100%;
+    height: 3px;
+}

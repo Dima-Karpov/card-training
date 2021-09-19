@@ -1,0 +1,20 @@
+.label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox {
+    /*appearance: none;*/ /*вырезает внешний вид*/
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: #1440c6;
+}
+
+.checkbox:focus{
+    outline: #7d8ce5 solid 1px;
+}
+.spanClassName {
+    color: #1449e3;
+}
