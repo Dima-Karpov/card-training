@@ -6,11 +6,12 @@ import { Input } from "../common/Input/Input";
 import { Checkbox } from "../common/Checkbox/Checkbox";
 import { Button } from "../common/Button/Button";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, Redirect } from 'react-router-dom';
 import { PATH } from "../App/App";
 import { Heading } from "../common/Heading/Heading";
-import { loginTC } from "../../bll/reducer/auth-reducer/auth-reducer";
+import { login } from "../../bll/reducer/auth-reducer/auth-reducer";
+import { AppStoreType } from "../../bll/store";
 
 type FormikErrorType = {
     email?: string
@@ -21,6 +22,7 @@ type FormikErrorType = {
 export const Login: React.FC = React.memo(() => {
 
     const dispatch = useDispatch();
+    const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn);
 
     const [typeIcon, setTypeIcon] = useState<string>('password');
 
@@ -49,10 +51,16 @@ export const Login: React.FC = React.memo(() => {
             return errors;
         },
         onSubmit: valuse => {
-            dispatch(loginTC(valuse.email, valuse.password, valuse.rememberMe));
+            dispatch(login(valuse.email, valuse.password, valuse.rememberMe));
             formik.resetForm()
         },
     });
+
+    if(isLoggedIn){
+        return <Redirect to={PATH.PROFILE}/>
+    }
+
+    console.log('login - isLoggedIn',isLoggedIn)
 
     return (
         <div className={s.container}>

@@ -29,7 +29,9 @@ export const authReducer = (state: InitialStateType = initialState, action: AppA
         case 'auth/SET-PROFILE':
             return {...state, profile: action.profile};
         case 'auth/SET-IS-LOGGED-IN':
-            return {...state, isInitialized: action.isLoggedIn};
+            return {...state, isLoggedIn: action.isLoggedIn};
+        case 'auth/SET-IS-INITIALIZED':
+            return {...state, isInitialized: action.isInitialized};
         default:
             return state
     }
@@ -40,15 +42,20 @@ export const initializedProfile = (profile: ProfileResponseType) =>
     ({ type: 'auth/SET-PROFILE', profile } as const);
 export const setIsLoggedIn = (isLoggedIn: boolean) =>
     ({ type: 'auth/SET-IS-LOGGED-IN', isLoggedIn } as const);
+export const setInitialized = (isInitialized: boolean) =>
+    ({ type: 'auth/SET-IS-INITIALIZED', isInitialized } as const);
+
 
 
 // thunks
-export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => async (dispatch) =>{
+export const login = (email: string, password: string, rememberMe: boolean): AppThunk => async (dispatch) =>{
     try{
         dispatch(setAppStatusAC('loading'));
         const result = await authAPI.login(email, password, rememberMe);
-        dispatch(initializedProfile(result.data))
+        dispatch(initializedProfile(result.data));
+        dispatch(setIsLoggedIn(true));
         dispatch(setAppStatusAC('succeeded'));
+        console.log(result)
     } catch(e: any){
         const error = e.res ? e.res.data.error : (e.message + ', more details in the console');
         console.log(error);
@@ -56,9 +63,26 @@ export const loginTC = (email: string, password: string, rememberMe: boolean): A
     }
 };
 
+export const initializedApp = (): AppThunk => async (dispatch) => {
+    try {
+        dispatch(setAppStatusAC('loading'));
+        const res = await authAPI.me()
+        if (res.data._id) {
+            dispatch(setInitialized(true))
+        }
+        dispatch(setAppStatusAC('succeeded'));
+    } catch (e: any) {
+        const error = e.response ? e.response.data.error : (`AuthMe failed: ${e.message}.`)
+        console.log(error)
+        dispatch(setAppStatusAC("failed"))
+    }
+};
+
+
 
 export type AuthAT = ReturnType<typeof initializedProfile>
                     | ReturnType<typeof setIsLoggedIn>
+                    | ReturnType<typeof setInitialized>
 
 
 export type ProfileResponseType = {

@@ -1,6 +1,5 @@
-import { authAPI } from "../../dal/api-cards";
-import { AppActionsType, AppThunk } from "../store";
-import { RequestStatusType, setIsLoggedIn } from "./auth-reducer/auth-reducer";
+import { AppActionsType } from "../store";
+import { RequestStatusType } from "./auth-reducer/auth-reducer";
 
 
 type InitialStateType = typeof initialState;
@@ -38,20 +37,7 @@ export const appReducer = (state: InitialStateType = initialState, action: AppAc
 export const setAppStatusAC = (status: RequestStatusType) => ({ type: 'app/SET-APP-STATUS', status } as const);
 
 //thunk
-export const initializetApp = (): AppThunk => async (dispatch) => {
-    try {
-        dispatch(setAppStatusAC('loading'));
-        const res = await authAPI.me()
-        if (res.data._id) {
-            dispatch(setIsLoggedIn(true))
-        }
-        dispatch(setAppStatusAC('succeeded'));
-    } catch (e: any) {
-        const error = e.response ? e.response.data.error : (`AuthMe failed: ${e.message}.`)
-        console.log(error)
-        dispatch(setAppStatusAC("failed"))
-    }
-};
+
 
 
 export type AppAT = ReturnType<typeof setAppStatusAC>
