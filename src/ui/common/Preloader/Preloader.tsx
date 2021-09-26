@@ -2,8 +2,8 @@ import React from "react";
 import s from './Preloader.module.css';
 import loader from '../../../assets/images/loader.svg';
 import { useSelector } from "react-redux";
-import { RequestStatusType } from "../../../bll/reducer/auth-reducer";
 import { AppStoreType } from "../../../bll/store";
+import { RequestStatusType } from "../../../bll/reducer/auth-reducer/auth-reducer";
 
 
 export const Preloader: React.FC = React.memo(() => {

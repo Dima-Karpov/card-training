@@ -7,10 +7,10 @@ import { Checkbox } from "../common/Checkbox/Checkbox";
 import { Button } from "../common/Button/Button";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { loginTC } from './../../bll/reducer/auth-reducer';
 import { NavLink } from 'react-router-dom';
 import { PATH } from "../App/App";
 import { Heading } from "../common/Heading/Heading";
+import { loginTC } from "../../bll/reducer/auth-reducer/auth-reducer";
 
 type FormikErrorType = {
     email?: string
@@ -43,7 +43,7 @@ export const Login: React.FC = React.memo(() => {
             }
             if (!values.password) {
                 errors.password = 'Required'
-            } else if (values.password.length < 6) {
+            } else if (values.password.length < 7) {
                 errors.password = 'Please enter your password'
             }
             return errors;
@@ -85,7 +85,7 @@ export const Login: React.FC = React.memo(() => {
                 <NavLink to={PATH.PASSWORD_RECOVERY} className={s.forgotLink}>Forgot Password</NavLink>
                 <div className={s.button}>
                     <form onSubmit={formik.handleSubmit}>
-                        <Button name='Login' type={"submit"} className={styleButton.button} />
+                        <Button name='Login' type={'submit'} className={styleButton.button} />
                     </form>
                     <div style={{ color: 'gray' }}>
                         Dont't have an account?
