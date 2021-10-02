@@ -1,0 +1,11 @@
+.numberCards{
+    width: 196px;
+}
+.title{
+    margin-bottom: 40px;
+
+    font-size: 16px;
+    line-height: 1.1;
+    text-align: left;
+    font-weight: 600;
+}

@@ -24,7 +24,7 @@ export const PasswordRecovery: React.FC = React.memo(() => {
     const dispatch = useDispatch();
     const recovered = useSelector<AppStoreType, boolean>(state => state.restorePassword.isRecovered);
     const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn);
-    const status = useSelector<AppStoreType, RequestStatusType>(state => state.app.satus);
+    const status = useSelector<AppStoreType, RequestStatusType>(state => state.app.status);
 
     const formik = useFormik({
         initialValues: {

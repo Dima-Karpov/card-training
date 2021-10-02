@@ -1,6 +1,6 @@
 import { authAPI } from "../../../dal/api-cards";
 import { AppActionsType, AppThunk } from "../../store";
-import { setAppStatusAC } from "../app-reducer";
+import { setAppStatusAC, setUserData } from "../app-reducer";
 
 const initialState = {
     profile: {
@@ -89,6 +89,7 @@ export const initializedApp = (): AppThunk => async (dispatch) => {
         if (res.data._id) {
             dispatch(setIsLoggedIn(true)); //is it right to do so
             dispatch(setInitialized(true))
+            dispatch(setUserData(res.data))
         }
         dispatch(setAppStatusAC('succeeded'));
     } catch (e: any) {

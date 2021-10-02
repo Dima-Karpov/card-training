@@ -23,7 +23,7 @@ const initialState = {
 }
 
 
-export const appReducer = (state: InitialStateType = initialState, action: AppActionsType): any => {
+export const appReducer = (state: InitialStateType = initialState, action: AppActionsType): InitialStateType => {
     switch (action.type) {
         case 'app/SET-APP-STATUS':
             return {
@@ -35,6 +35,11 @@ export const appReducer = (state: InitialStateType = initialState, action: AppAc
                 ...state,
                 headerMenuStatus: action.headerMenuStatus
             }
+        case 'app/SET-USER-DATA':
+            return {
+                ...state,
+                userData: action.userData
+            }
         default:
             return state
     }
@@ -42,12 +47,14 @@ export const appReducer = (state: InitialStateType = initialState, action: AppAc
 //action
 export const setAppStatusAC = (status: RequestStatusType) => ({ type: 'app/SET-APP-STATUS', status } as const);
 export const setHeaderMenuStatus = (headerMenuStatus: HeaderMenuStatusType) => ({type: 'app/SET-HEADER-MENU-STATUS', headerMenuStatus} as const)
-
+export const setUserData = (userData: UserDataType) => ({type: 'app/SET-USER-DATA', userData} as const)
 //thunk
 
 
 
-export type AppAT = ReturnType<typeof setAppStatusAC> | ReturnType<typeof setHeaderMenuStatus>
+export type AppAT = ReturnType<typeof setAppStatusAC> 
+                    | ReturnType<typeof setHeaderMenuStatus>
+                    | ReturnType<typeof setUserData>
 
 export type HeaderMenuStatusType = "packsList" | "profile"
 
