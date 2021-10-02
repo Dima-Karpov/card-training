@@ -53,7 +53,10 @@ export const login = (email: string, password: string, rememberMe: boolean): App
         dispatch(setAppStatusAC('loading'));
         const result = await authAPI.login(email, password, rememberMe);
         dispatch(initializedProfile(result.data));
+
         dispatch(setIsLoggedIn(true));
+        dispatch(setInitialized(true));
+
         dispatch(setAppStatusAC('succeeded'));
         console.log(result)
     } catch(e: any){
@@ -63,11 +66,28 @@ export const login = (email: string, password: string, rememberMe: boolean): App
     }
 };
 
+export const logout = (): AppThunk => async (dispatch) => {
+    try{
+        dispatch(setAppStatusAC('loading'));
+        await authAPI.logout();
+
+        dispatch(setIsLoggedIn(false));
+        dispatch(setInitialized(false));
+
+        dispatch(setAppStatusAC('succeeded'));
+    } catch(e: any){
+        const error = e.responce ? e.responce.data.error : (`Logout failde: ${e.message}`);
+        console.log(error);
+        dispatch(setAppStatusAC('failed'));
+    }
+};
+
 export const initializedApp = (): AppThunk => async (dispatch) => {
     try {
         dispatch(setAppStatusAC('loading'));
         const res = await authAPI.me()
         if (res.data._id) {
+            dispatch(setIsLoggedIn(true)); //is it right to do so
             dispatch(setInitialized(true))
         }
         dispatch(setAppStatusAC('succeeded'));
@@ -100,6 +120,6 @@ export type ProfileResponseType = {
     __v: number
     _id: string
 };
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
 
 type InitialStateType = typeof initialState;

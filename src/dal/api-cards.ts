@@ -18,6 +18,9 @@ export const authAPI = {
     login(email: string, password: string, rememberMe: boolean){
         return instance.post<LoginUserResponseType>(`auth/login`, {email, password, rememberMe})
     },
+    logout(){
+        return instance.delete<LogoutResponceType>(`auth/me`, {})
+    },
     singUp(email: string, password: string){
         return instance.post<LoginUserResponseType>(`auth/register`, {email, password})
     },
@@ -35,3 +38,6 @@ export const authAPI = {
 
 
 export type LoginUserResponseType = ProfileResponseType;
+export type LogoutResponceType = {
+    info: string
+}

@@ -1,0 +1,82 @@
+.containerHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EBE0E9;
+    padding: 0 10px 0 10px;
+}
+
+.title{
+    font-size: 26px;
+    font-weight: 600;
+}
+.tabsWrap{
+    flex-basis: 50%;
+    /* order: -2;*/
+    background-color: #EBE0E9;
+    color: #2D2E46;
+    font-size: 14px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    box-sizing: border-box;
+   
+}
+
+.tabPack{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: revert;
+
+    min-width: 175px;
+    height: 60px;
+    background-image: url(../../../assets/images/packs.svg);
+    background-repeat: no-repeat;
+    background-position: 30% 50%;   
+    transition: .3s;
+}
+.tabProfile{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: revert;
+
+    min-width: 175px;
+    height: 60px;   
+    background-image: url(../../../assets/images/profile.svg);
+    background-repeat: no-repeat;
+    background-position: 30% 50%;   
+    transition: .3s;
+}
+
+.activeHeaderMenuItem{
+    background-color: #DCCCDB;
+    border-bottom: 3px solid #21268F;
+}
+
+.buttonLogOut{
+    min-width: 140px;
+    height: 40px;
+    font-family: inherit;
+    appearance: none;
+    border: 0;
+    border-radius: 10px;
+    background: #D7D8EF;
+    color: #2D2E46;
+    padding: 13px;
+    font-size: 1rem;
+    cursor: auto;
+}
+
+.buttonLogOut:hover {
+    background-color: #F9F9FE;
+}
+.buttonLogOut:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}

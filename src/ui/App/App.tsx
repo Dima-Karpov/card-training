@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route } from 'react-router';
+import { Route, Switch, useLocation } from 'react-router';
 import s from './App.module.css';
 import { Login } from '../Login/Login';
 import { Registration } from '../Registration/Registration';
@@ -8,31 +8,38 @@ import { PasswordChange } from '../PasswordChange/PasswordChange';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { AppStoreType } from '../../bll/store';
-import { Preloader } from '../common/Preloader/Preloader';
-import { initializedApp } from '../../bll/reducer/auth-reducer/auth-reducer';
+import { initializedApp, RequestStatusType } from '../../bll/reducer/auth-reducer/auth-reducer';
 import { Redirect } from 'react-router-dom';
+import { HeaderMenu } from '../common/HeaderMenu/HeaderMenu';
+import { Profile } from '../Profile/Profile';
 
 
 
 export const App: React.FC = () => {
 
   const dispatch = useDispatch();
+  const status = useSelector<AppStoreType, RequestStatusType>(state => state.app.status);
+  const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn);
   const isInitialized = useSelector<AppStoreType, boolean>(state => state.auth.isInitialized);
-  const userId = useSelector<AppStoreType, string>(state => state.auth.profile._id);
+
+  console.log('App - isInitialized', isInitialized)
+
+  console.log('App - isLoggedIn', isLoggedIn)
 
   useEffect(() => {
-    !userId && dispatch(initializedApp())
-  }, [dispatch, userId])
+    dispatch(initializedApp())
+  }, [dispatch])
 
-  if(!isInitialized){
-    return <Preloader/>
+  if (status === 'loading') {
+    return <div style={{ position: 'fixed', top: '40%', textAlign: 'center', width: '100%' }}>
+      Loadig...
+    </div>
   }
-  console.log('app - isInitialized', isInitialized)
 
   return (
     <div className={s.app}>
-      <Routes/>
-      <Preloader/>
+      <Routes />
+
     </div>
   );
 };
@@ -48,16 +55,29 @@ export const PATH = {
 
 
 export const Routes: React.FC = React.memo(() => {
+
+  const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn);
+  const { pathname } = useLocation();
+
+  console.log(pathname)
+  console.log('Routs - isLoggedIn', isLoggedIn)
+
   return (
-      <>
-        <Route path={"/"} exact render={() => <Redirect to={"/login"}/>}/>
-        <Route path={PATH.LOGIN} render={() => <Login/>}/>
-        <Route path={PATH.SIGN_UP} render={() => <Registration/>}/>
-        <Route path={PATH.PASSWORD_RECOVERY} render={() => <PasswordRecovery/>}/>
-        <Route path={PATH.PASSWORD_CHANGE} render={() => <PasswordChange/>}/>
-        <Route path={PATH.PROFILE} render={() => <PasswordChange/>}/>
-      </>
-    )
+
+    <>
+      {isLoggedIn && pathname !== '/404' && <HeaderMenu />}
+
+      <Switch>
+        <Route path={"/"} exact render={() => <Redirect to={"/login"} />} />
+        <Route path={PATH.LOGIN} render={() => <Login />} />
+        <Route path={PATH.SIGN_UP} render={() => <Registration />} />
+        <Route path={PATH.PASSWORD_RECOVERY} render={() => <PasswordRecovery />} />
+        <Route path={PATH.PASSWORD_CHANGE} render={() => <PasswordChange />} />
+        <Route path={PATH.PROFILE} render={() => <Profile />} />
+      </Switch>
+
+    </>
+  )
 });
 
 

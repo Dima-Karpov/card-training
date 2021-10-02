@@ -55,7 +55,6 @@ export const Login: React.FC = React.memo(() => {
             formik.resetForm()
         },
     });
-
     if(isLoggedIn){
         return <Redirect to={PATH.PROFILE}/>
     }
