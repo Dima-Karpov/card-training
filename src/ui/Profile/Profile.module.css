@@ -1,0 +1,79 @@
+.packsList{
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+    min-height: 100%;
+    margin: 0 auto;
+}
+.inner{
+    min-height: 635px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+.aside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 35px 25px;
+    width: 243px;
+
+    background-color: #ECECF9;
+    border-radius: 8px 0 0 8px;
+}
+
+.rangeWrap{
+    margin-top: 45px;
+}
+
+.content{
+    padding: 25px 40px 25px 40px;
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffff;
+    border-radius: 0 8px 8px 0;
+}
+.tableTitle{
+    font-weight: 600;
+    font-size: 22px;
+    color: #2D2E46;
+}
+.topWrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.buttonAddPack {
+    min-width: 150px;
+    min-height: 50px;
+    font-family: inherit;
+    appearance: none;
+    border: 0;
+    border-radius: 40px;
+    background: #232480;
+    color: #fff;
+    padding: 13px;
+    font-size: 1rem;
+    cursor: auto;
+
+    margin: 25px 0 25px 25px;
+    padding: 0;
+}
+.buttonAddPack:hover {
+    background: #1d49aa;
+}
+.buttonAddPack:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}

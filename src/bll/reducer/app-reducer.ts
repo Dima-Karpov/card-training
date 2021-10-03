@@ -28,17 +28,22 @@ export const appReducer = (state: InitialStateType = initialState, action: AppAc
         case 'app/SET-APP-STATUS':
             return {
                 ...state,
-                status: action.status
+                status: action.status,
             }
         case 'app/SET-HEADER-MENU-STATUS':
             return {
                 ...state,
-                headerMenuStatus: action.headerMenuStatus
+                headerMenuStatus: action.headerMenuStatus,
             }
         case 'app/SET-USER-DATA':
             return {
                 ...state,
-                userData: action.userData
+                userData: action.userData,
+            }
+        case 'app/SET-ERROR':
+            return {
+                ...state,
+                error: action.error,
             }
         default:
             return state
@@ -46,8 +51,9 @@ export const appReducer = (state: InitialStateType = initialState, action: AppAc
 }
 //action
 export const setAppStatusAC = (status: RequestStatusType) => ({ type: 'app/SET-APP-STATUS', status } as const);
-export const setHeaderMenuStatus = (headerMenuStatus: HeaderMenuStatusType) => ({type: 'app/SET-HEADER-MENU-STATUS', headerMenuStatus} as const)
-export const setUserData = (userData: UserDataType) => ({type: 'app/SET-USER-DATA', userData} as const)
+export const setHeaderMenuStatus = (headerMenuStatus: HeaderMenuStatusType) => ({type: 'app/SET-HEADER-MENU-STATUS', headerMenuStatus} as const);
+export const setUserData = (userData: UserDataType) => ({type: 'app/SET-USER-DATA', userData} as const);
+export const setAppError = (error: string | null) => ({type: 'app/SET-ERROR', error} as const);
 //thunk
 
 
@@ -55,6 +61,7 @@ export const setUserData = (userData: UserDataType) => ({type: 'app/SET-USER-DAT
 export type AppAT = ReturnType<typeof setAppStatusAC> 
                     | ReturnType<typeof setHeaderMenuStatus>
                     | ReturnType<typeof setUserData>
+                    | ReturnType<typeof setAppError>
 
 export type HeaderMenuStatusType = "packsList" | "profile"
 

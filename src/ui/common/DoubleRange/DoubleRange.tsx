@@ -25,8 +25,8 @@ export const DoubleRange: React.FC<DoubleRangePropsType> = React.memo((props) =>
                     value={value}
                     onChange={onDoubleRangeHandlerChange}
                     aria-labelledby="range-slider"
-                    min={props.minCardsCount}
-                    max={props.maxCardsCount}
+                    min={minCardsCount}
+                    max={maxCardsCount}
                 />
             </div>
         </div>
