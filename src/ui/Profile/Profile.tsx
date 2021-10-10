@@ -15,6 +15,7 @@ import {
     setSortPacksNameOrder, setSortPacksUpdeatetOrder, setSortPacksCreatedByOrder, addNewPack, updatePack, deletePack,
     setNewCurrentPage, setNewPageCount
 } from './../../bll/reducer/packsList-reducer';
+import { ModalWindowAdd } from '../common/ModalWindow/modalAdd/ModalWindowAdd';
 
 export const Profile: React.FC = React.memo(() => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export const Profile: React.FC = React.memo(() => {
     const packs = useSelector<AppStoreType, PackResponseType[]>(state => state.packs.cardPacks);
 
     const [openModalWindow, setOpenOpenModalWindow] = useState<boolean>(false);
-    const pagesCount = Math.ceil(cardPacksTotalCount / pageCount);
+    // const pagesCount = Math.ceil(cardPacksTotalCount / pageCount);
 
     useEffect(() => {
         switch (sortPacksFilter) {
@@ -131,7 +132,7 @@ export const Profile: React.FC = React.memo(() => {
                         <ProfileAvatar />
                         <div className={s.rangeWrap}>
                             <DoubleRange
-                                minCardsCount={10}
+                                minCardsCount={1}
                                 maxCardsCount={100}
                                 setDoubleRangeValues={() => { }}
                             />
@@ -155,6 +156,10 @@ export const Profile: React.FC = React.memo(() => {
                             removePack={removePack}
 
                         />
+                        {openModalWindow && <ModalWindowAdd
+                            addNewPack={onAddNewClickPackHandler}
+                            closeModal={onCloseModalHandler}
+                        />}
 
                     </div>
                 </div>

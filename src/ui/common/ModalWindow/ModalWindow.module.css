@@ -1,0 +1,25 @@
+.modalWindow {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(40, 44, 52, .8);
+    z-index: 1000;
+}
+
+/* .modalBlock {
+    background: #9890C7;
+    border: 2px solid #b8b7b7;
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+} */
+

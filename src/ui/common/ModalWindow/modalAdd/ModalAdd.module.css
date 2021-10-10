@@ -1,0 +1,36 @@
+
+.caption{
+    margin: 0;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.captionBtn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.btnClose{
+    width: 14px;
+    height: 14px;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    background-image: url(../../../../assets/images/cross.svg);
+}
+
+.modalBlock{
+    background: #9890C7;
+    border: 2px solid #b8b7b7;
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.blockBtn{
+    padding: 20px ;
+}

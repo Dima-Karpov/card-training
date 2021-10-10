@@ -1,0 +1,33 @@
+.buttonSmall{
+    padding: 7px;
+    margin: 0 2px;
+
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.buttonSmall :hover {
+    box-shadow: 0 1px 2px rgb(33, 38, 143);
+}
+.buttonSmall :active{
+    box-shadow:  0 2px 4px rgb(33, 38, 143);
+}
+
+.buttonSmallDisabled{
+    padding: 7px;
+    margin: 0 2px;
+
+    border: none;
+    border-radius: 2px;
+
+    background-color:  #efefef;
+    color: #c1c1c1;
+    font-weight: 600;
+
+    font-size: 12px;
+    line-height: 1.05;
+    text-transform: capitalize;
+
+    cursor: not-allowed;
+}
