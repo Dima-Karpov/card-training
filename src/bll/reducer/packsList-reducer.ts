@@ -30,7 +30,8 @@ type InitialStateType = typeof initialState;
 
 
 export const packsListReducer = (state: InitialStateType = initialState, action: AppActionsType): InitialStateType => {
-    switch (action.type) {
+    switch (action.type)
+    {
         case 'packs/SET-PACKS-LIST-STATE':
             return {
                 ...state,
@@ -105,7 +106,7 @@ export const setPacksListState = (packsState: GetPacksResponseType) => (
 export const changeShowAllOrMyPacks = (isShowMyPacks: boolean, userId: string) => (
     { type: 'packs/CHANGE-SHOW-ALL-OR-MY-PACKS', isShowMyPacks, userId } as const
 );
-export const setDoubleRangesValue= (minCardsDoubleRangeValue: number, maxCardsDoubleRangeValue: number) => (
+export const setDoubleRangesValue = (minCardsDoubleRangeValue: number, maxCardsDoubleRangeValue: number) => (
     { type: 'packs/SET-DOUBLE-RANGES-VALUES', minCardsDoubleRangeValue, maxCardsDoubleRangeValue } as const
 );
 export const setSearchPacksValue = (searchPacksValue: string) => (
@@ -133,10 +134,12 @@ export const setNewPageCount = (pageCount: number) => (
 export const fetchPacks = (searchPacksValue: string, min: number, max: number, sortPacksOrder: SortPacksAndCardsOrderType,
     sortPacksFilter: string, page: number, pageCount: number, user_id: string): AppThunk =>
     async (dispatch) => {
-        try {
+        try
+        {
             const res = await packsListApi.getPacks(searchPacksValue, min, max, sortPacksOrder, sortPacksFilter, page, pageCount, user_id);
             dispatch(setPacksListState(res.data));
-        } catch (e: any) {
+        } catch (e: any)
+        {
             const error = e.res ? e.res.data.error : (`Get packs failed: ${e.massage}.`);
             console.log(error)
         }
@@ -145,13 +148,15 @@ export const fetchPacks = (searchPacksValue: string, min: number, max: number, s
 export const addNewPack = (packName: string, searchPacksValue: string, min: number, max: number, sortPacksOrder: SortPacksAndCardsOrderType,
     sortPacksFilter: string, page: number, pageCount: number, user_id: string): AppThunk =>
     async (dispatch) => {
-        try {
+        try
+        {
             dispatch(setAppStatusAC('loading'));
             await packsListApi.addPack(packName);
             dispatch(fetchPacks(searchPacksValue, min, max, sortPacksOrder, sortPacksFilter, page, pageCount, user_id));
             dispatch(changeShowAllOrMyPacks(true, user_id));
             dispatch(setAppStatusAC('succeeded'))
-        } catch (e: any) {
+        } catch (e: any)
+        {
             const error = e.res ? e.res.data.error : `Add pack faild: ${e.message}.`
             dispatch(setAppError(error));
             console.log(error);
@@ -161,34 +166,39 @@ export const addNewPack = (packName: string, searchPacksValue: string, min: numb
 export const updatePack = (newPackName: string, packId: string, searchPacksValue: string, min: number, max: number, sortPacksOrder: SortPacksAndCardsOrderType,
     sortPacksFilter: string, page: number, pageCount: number, user_id: string): AppThunk =>
     async (dispatch) => {
-        try{dispatch(setAppStatusAC('loading'));
-        await packsListApi.updatePack(newPackName, packId);
-        dispatch(fetchPacks(searchPacksValue, min, max, sortPacksOrder, sortPacksFilter, page, pageCount, user_id));
-        dispatch(changeShowAllOrMyPacks(true, user_id));
-        dispatch(setAppStatusAC('succeeded'));
-    } catch (e: any) {
-        const error = e.res ? e.res.data.error : `Update pack failed: ${e.message}.`
-        dispatch(setAppError(error));
-        
-        console.log(error);
-        dispatch(setAppStatusAC('failed'));
+        try
+        {
+            dispatch(setAppStatusAC('loading'));
+            await packsListApi.updatePack(newPackName, packId);
+            dispatch(fetchPacks(searchPacksValue, min, max, sortPacksOrder, sortPacksFilter, page, pageCount, user_id));
+            dispatch(changeShowAllOrMyPacks(true, user_id));
+            dispatch(setAppStatusAC('succeeded'));
+        } catch (e: any)
+        {
+            const error = e.res ? e.res.data.error : `Update pack failed: ${e.message}.`
+            dispatch(setAppError(error));
+            console.log(error);
+            dispatch(setAppStatusAC('failed'));
         }
     };
 
 export const deletePack = (packId: string, packName: string, min: number, max: number, sortPacksOrder: SortPacksAndCardsOrderType,
-    sortPacksFilter: string, page: number, pageCount: number, user_id: string): AppThunk => 
+    sortPacksFilter: string, page: number, pageCount: number, user_id: string): AppThunk =>
     async (dispatch) => {
-        try{
+        try
+        {
             dispatch(setAppStatusAC('loading'));
+            await packsListApi.deletePack(packId);
             dispatch(fetchPacks(packName, min, max, sortPacksOrder, sortPacksFilter, page, pageCount, user_id));
             dispatch(changeShowAllOrMyPacks(true, user_id));
             dispatch(setAppStatusAC('succeeded'));
-        }catch (e: any) {
+        } catch (e: any)
+        {
             const error = e.res ? e.res.data.error : `Delete pack failed: ${e.message}.`
             dispatch(setAppError(error));
             console.log(error);
             dispatch(setAppStatusAC('failed'));
-            }
+        }
     }
 //types
 export type PacksListReducerActionType = ReturnType<typeof setPacksListState>

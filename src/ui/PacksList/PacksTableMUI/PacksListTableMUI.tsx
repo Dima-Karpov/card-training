@@ -13,6 +13,7 @@ import { StyledTableCell, StyledTableRow } from './PacksListTableMUIStyles';
 import { NavLink } from 'react-router-dom';
 import s from './PacksListTableMUI.module.css';
 import { ButtonSmall } from '../../common/Button/ButtonSmall/ButtomSmall';
+import { ModalWindowDelete } from '../../common/ModalWindow/ModalDelete/ModalWindowDelete';
 
 type PacksListTableMUIPropsType = {
     user_id: string
@@ -119,7 +120,7 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
                         <StyledTableCell>
                             <div className={s.buttonsContainer}>
                                 {
-                                    user_id === pack.user_id 
+                                    user_id === pack.user_id
                                         ?
                                         <>
                                             <ButtonSmall
@@ -154,9 +155,15 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
                             </div>
                         </StyledTableCell>
                     </StyledTableRow>))}
-
                 </TableBody>
-
+                {openDeleteModalWindow &&
+                    <ModalWindowDelete
+                        name='Pack'
+                        packName={packName}
+                        onDeleteButtonClick={onDeletePackHandler}
+                        onCloseModalButtonClick={onCancelClickHandler}
+                    />
+                }
             </Table>
         </TableContainer>
     )
