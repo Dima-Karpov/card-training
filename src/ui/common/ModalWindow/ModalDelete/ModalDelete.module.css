@@ -1,0 +1,54 @@
+.modalDelet {
+	background: #9890c7;
+	border: 2px solid #b8b7b7;
+	width: 500px;
+	height: auto;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+}
+.captionBtn {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.caption {
+	margin: 0;
+	margin-bottom: 40px;
+	font-family: SFUIDisplay, sans-serif;
+	font-weight: 600;
+	font-size: 18px;
+}
+
+.btnClose {
+	width: 14px;
+	height: 14px;
+
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+
+	background-image: url(../../../../assets/images/cross.svg);
+}
+.inputWrap {
+	margin: 30px 20px 30px 25px;
+}
+.text {
+	font-family: SFUIDisplay, sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.6;
+}
+.accent {
+	font-family: SFUIDisplay, sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1.6;
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 25px;
+}
