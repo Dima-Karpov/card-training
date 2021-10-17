@@ -14,6 +14,7 @@ import { NavLink } from 'react-router-dom';
 import s from './PacksListTableMUI.module.css';
 import { ButtonSmall } from '../../common/Button/ButtonSmall/ButtomSmall';
 import { ModalWindowDelete } from '../../common/ModalWindow/ModalDelete/ModalWindowDelete';
+import { ModalWindowEditPack } from '../../common/ModalWindow/modalEdit/ModalWindowEditPack';
 
 type PacksListTableMUIPropsType = {
     user_id: string
@@ -65,10 +66,9 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
         setOpenDeleteModalWindow(false);
         setOpenEditModalWindow(false);
     }, []);
-
     const onUpdatePackHandler = useCallback((packId: string, packName: string) => {
         setOpenEditModalWindow(true);
-        setId(id);
+        setId(packId);
         setPackName(packName);
     }, [])
 
@@ -162,6 +162,13 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
                         packName={packName}
                         onDeleteButtonClick={onDeletePackHandler}
                         onCloseModalButtonClick={onCancelClickHandler}
+                    />
+                }
+                {openEditModalWindow &&
+                    <ModalWindowEditPack
+                        packName={packName}
+                        editNewPack={onEditNewPackHandler}
+                        closeModal={onCancelClickHandler}
                     />
                 }
             </Table>

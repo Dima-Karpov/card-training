@@ -1,0 +1,31 @@
+.modalEdit {
+	background: #9890c7;
+	border: 2px solid #b8b7b7;
+	width: 500px;
+	height: auto;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+}
+.captionBtn {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.btnClose {
+	width: 14px;
+	height: 14px;
+
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+
+	background-image: url(../../../../assets/images/cross.svg);
+}
+.btns {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin: 25px 25px;
+}

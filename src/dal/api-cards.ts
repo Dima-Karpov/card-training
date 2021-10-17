@@ -38,7 +38,6 @@ export const authAPI = {
         return instance.put<UpdateUserDataResponseType>(`auth/me`, {name, avatar})
     },
 };
-
 export const packsListApi = {
     getPacks(packName: string, min: number, max: number, sortPacksOrder: SortPacksAndCardsOrderType, 
         sortPacksFilter: string, page: number, pageCount: number, user_id: string){

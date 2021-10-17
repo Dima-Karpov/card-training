@@ -9,6 +9,7 @@ type SuperInputTextPropsType = DefaultInputPropsType & {
     onEnter?: () => void
     error?: string
     spanClassName?: string
+    onChangeHandler?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 
