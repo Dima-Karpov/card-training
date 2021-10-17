@@ -30,7 +30,8 @@ export const App: React.FC = () => {
     dispatch(initializedApp())
   }, [dispatch])
 
-  if (status === 'loading') {
+  if (status === 'loading')
+  {
     return <div style={{ position: 'fixed', top: '40%', textAlign: 'center', width: '100%' }}>
       Loadig...
     </div>
@@ -51,6 +52,7 @@ export const PATH = {
   UPDATE_PASSWORD: '/updatePassword/:token',
   PASSWORD_CHANGE: '/password-change',
   PROFILE: '/profile',
+  CARDS: '/cardsList/packId}', // : wath?
 }
 
 

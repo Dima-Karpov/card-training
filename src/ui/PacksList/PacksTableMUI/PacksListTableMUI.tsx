@@ -15,6 +15,8 @@ import s from './PacksListTableMUI.module.css';
 import { ButtonSmall } from '../../common/Button/ButtonSmall/ButtomSmall';
 import { ModalWindowDelete } from '../../common/ModalWindow/ModalDelete/ModalWindowDelete';
 import { ModalWindowEditPack } from '../../common/ModalWindow/modalEdit/ModalWindowEditPack';
+import { AppStoreType } from '../../../bll/store';
+import { useSelector } from "react-redux"
 
 type PacksListTableMUIPropsType = {
     user_id: string
@@ -44,6 +46,9 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
 
     const [openDeleteModalWindow, setOpenDeleteModalWindow] = useState<boolean>(false);
     const [openEditModalWindow, setOpenEditModalWindow] = useState<boolean>(false);
+
+    const { sortPacksNameOrder, sortPacksCardsCountOrder,
+        sortPacksUpdateOrder, sortPacksCreateByOrder } = useSelector((state: AppStoreType) => state.packs);
 
     const [id, setId] = useState<string>('');
     const [packName, setPackName] = useState<string>('');
@@ -81,29 +86,29 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
                         <StyledTableCell>
                             <ItemsFilterSpan
                                 title='Name'
-                                status={''}
-                                setSetStatusValue={() => { }}
+                                status={sortPacksNameOrder}
+                                setSetStatusValue={setNewSortPacksNameOrder}
                             />
                         </StyledTableCell>
                         <StyledTableCell aling='right'>
                             <ItemsFilterSpan
                                 title='Cards'
-                                status={''}
-                                setSetStatusValue={() => { }}
+                                status={sortPacksCardsCountOrder}
+                                setSetStatusValue={setNewSortPacksCardsCountOreder}
                             />
                         </StyledTableCell>
                         <StyledTableCell aling='right'>
                             <ItemsFilterSpan
                                 title='Last Update'
-                                status={''}
-                                setSetStatusValue={() => { }}
+                                status={sortPacksUpdateOrder}
+                                setSetStatusValue={setNewSortPacksUpdateOrder}
                             />
                         </StyledTableCell>
                         <StyledTableCell aling='right'>
                             <ItemsFilterSpan
                                 title='Created by'
-                                status={''}
-                                setSetStatusValue={() => { }}
+                                status={sortPacksCreateByOrder}
+                                setSetStatusValue={setNewSortPacksCreatedByOrder}
                             />
                         </StyledTableCell>
                         <StyledTableCell aling='right'>Actions</StyledTableCell>
