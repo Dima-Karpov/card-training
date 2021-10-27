@@ -95,31 +95,31 @@ export const cardsListReducer = (state: InitialStateType = initialState, action:
 
 // action
 export const setCards = (cardsState: GetCardsResponseType) => (
-    { type: 'cards/SET-CARDS', cardsState } as const
-);
+    { type: 'cards/SET-CARDS', cardsState } as const);
+    
 export const setCardsTotalCount = (cardsTotalCount: number) => (
-    { type: 'cards/SET-CARDS-TOTAL-COUNT', cardsTotalCount } as const
-);
+    { type: 'cards/SET-CARDS-TOTAL-COUNT', cardsTotalCount } as const);
+
 export const setCardsNewCurrentPage = (newCurrentPage: number) => (
-    { type: 'cards/SET-CARDS-NEW-CURRENT-PAGE', newCurrentPage } as const
-);
+    { type: 'cards/SET-CARDS-NEW-CURRENT-PAGE', newCurrentPage } as const);
+
 export const setCardsNewCardsPageCount = (newPageCount: number) => (
-    { type: 'cards/SET-CARDS-NEW-CARDS-PAGE-COUNT', newPageCount } as const
-);
+    { type: 'cards/SET-CARDS-NEW-CARDS-PAGE-COUNT', newPageCount } as const);
+
 export const setSearchCardsValue = (searchCardsValue: string) => (
-    { type: 'cards/SET-SEARCH-CARDS-VALUE', searchCardsValue } as const
-);
+    { type: 'cards/SET-SEARCH-CARDS-VALUE', searchCardsValue } as const);
+
 export const setSortQuestionCards = (sortCardsQuestionOrder: SortPacksAndCardsOrderType, sortCardsFilter: string) => (
-    { type: 'cards/SET-SORT-QUESTION-CARDS', sortCardsQuestionOrder, sortCardsFilter } as const)
+    { type: 'cards/SET-SORT-QUESTION-CARDS', sortCardsQuestionOrder, sortCardsFilter } as const);
 
 export const setSortAnswerCards = (sortCardsAnswerOrder: SortPacksAndCardsOrderType, sortCardsFilter: string) => (
-    { type: 'cards/SET-SORT-ANSWER-CARDS', sortCardsAnswerOrder, sortCardsFilter } as const)
+    { type: 'cards/SET-SORT-ANSWER-CARDS', sortCardsAnswerOrder, sortCardsFilter } as const);
 
 export const setSortUpdateCards = (sortCardsUpdateOrder: SortPacksAndCardsOrderType, sortCardsFilter: string) => (
-    { type: 'cards/SET-SORT-UPDATE-CARDS', sortCardsUpdateOrder, sortCardsFilter } as const)
+    { type: 'cards/SET-SORT-UPDATE-CARDS', sortCardsUpdateOrder, sortCardsFilter } as const);
 
 export const setSortGradeCards = (sortCardsGradeOrder: SortPacksAndCardsOrderType, sortCardsFilter: string) => (
-    { type: 'cards/SET-SORT-GRADE-CARDS', sortCardsGradeOrder, sortCardsFilter } as const)
+    { type: 'cards/SET-SORT-GRADE-CARDS', sortCardsGradeOrder, sortCardsFilter } as const);
 
 
 // thunks
@@ -152,7 +152,7 @@ export const addCardTC = (packId: string, cardQuestion: string, cardAnswer: stri
         }
     };
 
-export const updateCard = (packId: string, cardId: string, newCardQuestion: string, newCardAnswer: string): AppThunk =>
+export const updateCardTC = (packId: string, cardId: string, newCardQuestion: string, newCardAnswer: string): AppThunk =>
     async (dispatch, getState) => {
         try {
             dispatch(setAppStatusAC('loading'));
@@ -168,7 +168,7 @@ export const updateCard = (packId: string, cardId: string, newCardQuestion: stri
         }
     };
 
-export const deleteCard = (packId: string, cardId: string): AppThunk =>
+export const deleteCardTC = (packId: string, cardId: string): AppThunk =>
     async (dispatch, getState) => {
         try {
             dispatch(setAppStatusAC('loading'));

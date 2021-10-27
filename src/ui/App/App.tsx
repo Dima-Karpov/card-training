@@ -12,6 +12,7 @@ import { initializedApp, RequestStatusType } from '../../bll/reducer/auth-reduce
 import { Redirect } from 'react-router-dom';
 import { HeaderMenu } from '../common/HeaderMenu/HeaderMenu';
 import { Profile } from '../Profile/Profile';
+import { CardsList } from '../CardsList/CardsList';
 
 
 
@@ -52,7 +53,7 @@ export const PATH = {
   UPDATE_PASSWORD: '/updatePassword/:token',
   PASSWORD_CHANGE: '/password-change',
   PROFILE: '/profile',
-  CARDS: '/cardsList/packId}', // : wath?
+  CARDS: `/cardsList`, // : wath?
 }
 
 
@@ -76,6 +77,7 @@ export const Routes: React.FC = React.memo(() => {
         <Route path={PATH.PASSWORD_RECOVERY} render={() => <PasswordRecovery />} />
         <Route path={PATH.PASSWORD_CHANGE} render={() => <PasswordChange />} />
         <Route path={PATH.PROFILE} render={() => <Profile />} />
+        <Route path={PATH.CARDS + `/:packId`} render={() => <CardsList />} />
       </Switch>
 
     </>

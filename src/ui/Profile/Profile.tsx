@@ -6,7 +6,6 @@ import { Button } from '../common/Button/Button';
 import { DoubleRange } from '../common/DoubleRange/DoubleRange';
 import s from './Profile.module.css'
 import { ProfileAvatar } from './ProfileAvatar/ProfileAvatar';
-import TextField from '@mui/material/TextField';
 import { PacksListTabelMUI } from '../PacksList/PacksTableMUI/PacksListTableMUI';
 import { useSelector, useDispatch } from 'react-redux';
 import { PackResponseType } from '../../dal/api-cards';
@@ -16,6 +15,7 @@ import {
     setNewCurrentPage, setNewPageCount
 } from './../../bll/reducer/packsList-reducer';
 import { ModalWindowAdd } from '../common/ModalWindow/modalAdd/ModalWindowAdd';
+import { Input } from '../common/Input/Input';
 
 export const Profile: React.FC = React.memo(() => {
     const dispatch = useDispatch();
@@ -142,7 +142,7 @@ export const Profile: React.FC = React.memo(() => {
                     <div className={s.content}>
                         <div className={s.tableTitle}>Packs List</div>
                         <div className={s.topWrap}>
-                            <TextField id="outlined-basic" label="Search" variant="outlined" />
+                            <Input onKeyPressEnter={setSearchValues}/>
                             <Button name='Add new pack' className={s.buttonAddPack} onClick={() => setOpenOpenModalWindow(true)} />
                         </div>
                         <PacksListTabelMUI 

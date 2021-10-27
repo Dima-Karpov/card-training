@@ -39,6 +39,7 @@ export const ModalEdit: React.FC<ModalEditPropsType> = React.memo((props) => {
           type='text'
           value={title}
           onChange={onChangeHandler}
+          
         />
       </div>
       <div className={s.btns}>

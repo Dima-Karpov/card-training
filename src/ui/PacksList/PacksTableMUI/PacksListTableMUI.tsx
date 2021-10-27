@@ -17,6 +17,7 @@ import { ModalWindowDelete } from '../../common/ModalWindow/ModalDelete/ModalWin
 import { ModalWindowEditPack } from '../../common/ModalWindow/modalEdit/ModalWindowEditPack';
 import { AppStoreType } from '../../../bll/store';
 import { useSelector } from "react-redux"
+import { PATH } from '../../App/App';
 
 type PacksListTableMUIPropsType = {
     user_id: string
@@ -75,7 +76,7 @@ export const PacksListTabelMUI: React.FC<PacksListTableMUIPropsType> = React.mem
         setOpenEditModalWindow(true);
         setId(packId);
         setPackName(packName);
-    }, [])
+    }, []);
 
 
     return (

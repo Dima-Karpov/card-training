@@ -129,7 +129,7 @@ export const setNewCurrentPage = (page: number) => (
 );
 export const setNewPageCount = (pageCount: number) => (
     { type: 'packs/SET-NEW-PAGE-COUNT', pageCount } as const
-)
+);
 //TC
 export const fetchPacks = (searchPacksValue: string, min: number, max: number, sortPacksOrder: SortPacksAndCardsOrderType,
     sortPacksFilter: string, page: number, pageCount: number, user_id: string): AppThunk =>
@@ -199,7 +199,7 @@ export const deletePack = (packId: string, packName: string, min: number, max: n
             console.log(error);
             dispatch(setAppStatusAC('failed'));
         }
-    }
+    };
 //types
 export type PacksListReducerActionType = ReturnType<typeof setPacksListState>
     | ReturnType<typeof changeShowAllOrMyPacks>

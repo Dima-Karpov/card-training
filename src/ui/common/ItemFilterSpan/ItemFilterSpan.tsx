@@ -34,13 +34,8 @@ export const ItemsFilterSpan: React.FC<ItemsFilterSpanPropsType> = React.memo((p
                     ? setSetStatusValue(0, 'user_name')
                     : setSetStatusValue(1, 'user_name')
                 break
-            case 'Created by':
-                status === 1
-                    ? setSetStatusValue(0, 'user_name')
-                    : setSetStatusValue(1, 'user_name')
-                break
         }
-    }, [])
+    }, [setSetStatusValue, status, title])
 
     return (
         <span onClick={onStatusClickHandler} className={s.spanTitle}>
