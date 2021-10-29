@@ -94,7 +94,7 @@ export const CardsList: React.FC = React.memo(() => {
     setOpenNewCardModal(false);
   }, []);
 
-  console.log('CardsList', packId)
+  console.log('CardsList', packId);
 
 
   return (
