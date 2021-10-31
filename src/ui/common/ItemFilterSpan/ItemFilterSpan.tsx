@@ -34,6 +34,21 @@ export const ItemsFilterSpan: React.FC<ItemsFilterSpanPropsType> = React.memo((p
                     ? setSetStatusValue(0, 'user_name')
                     : setSetStatusValue(1, 'user_name')
                 break
+            case 'Qestion':
+                status === 1
+                    ? setSetStatusValue(0, 'qestion')
+                    : setSetStatusValue(1, 'qestion')
+                break
+            case 'Answer':
+                status === 1
+                    ? setSetStatusValue(0, 'answer')
+                    : setSetStatusValue(1, 'answer')
+                break
+            case 'Grade':
+                status === 1
+                    ? setSetStatusValue(0, 'grade')
+                    : setSetStatusValue(1, 'grade')
+                break
         }
     }, [setSetStatusValue, status, title])
 

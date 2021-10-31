@@ -142,7 +142,7 @@ export const Profile: React.FC = React.memo(() => {
                     <div className={s.content}>
                         <div className={s.tableTitle}>Packs List</div>
                         <div className={s.topWrap}>
-                            <Input onKeyPressEnter={setSearchValues}/>
+                            {/* <Input onKeyPressEnter={setSearchValues}/> */}
                             <Button name='Add new pack' className={s.buttonAddPack} onClick={() => setOpenOpenModalWindow(true)} />
                         </div>
                         <PacksListTabelMUI 

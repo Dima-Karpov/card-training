@@ -8,12 +8,15 @@ import {
   setSearchCardsValue, setSortQuestionCards, updateCardTC
 } from './../../bll/reducer/cardsList-reducer';
 import { SortPacksAndCardsOrderType } from '../../bll/reducer/packsList-reducer';
+import { Button } from '../common/Button/Button';
+import { ModalWindowCardInfo } from '../common/ModalWindow/modalCardInfo/ModalWindowCardInfo';
 
 export const CardsList: React.FC = React.memo(() => {
 
   const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn);
   const user_id = useSelector<AppStoreType, string>(state => state.app.userData._id);
-  const packUserId = useSelector<AppStoreType, string>(state => state.cards.packUserId);
+  // const packUserId = useSelector<AppStoreType, string>(state => state.cards.packUserId);
+  const packUserId = '6127b5d6dc3ceb00046fc60c'
   const dispatch = useDispatch();
 
   const { cards, cardsTotalCount, searchCardsValue, sortCardsQuestionOrder, sortCardsAnswerOrder, sortCardsUpdateOrder,
@@ -95,11 +98,42 @@ export const CardsList: React.FC = React.memo(() => {
   }, []);
 
   console.log('CardsList', packId);
+  console.log('CardsList boolean', packUserId === user_id);
+  console.log('packUserId', packUserId);
+  console.log('user_id', user_id);
 
 
   return (
-    <div>
-      Okay!!
+    <div className={s.cardsList}>
+      <div className={s.container}>
+        <span className={s.topWrap}>
+          <button onClick={redirectToPacksListHandler} className={s.btn} />
+          <h2 className={s.title}>Pack Name</h2>
+        </span>
+        <div className={s.searchWrap}>
+          {/* SearchInput */}
+          {packUserId === user_id &&
+            <Button
+              name='Add new card'
+              onClick={() => onOpenModalHandler()}
+              red={true}
+            />}
+          {cards.length === 0
+            ? <span className={s.empty} >This pack is empty. Click add new card to fill this pack.</span>
+            : <>
+                table
+            </>
+            }
+            {openNewCardModal
+            && <ModalWindowCardInfo
+              name='Add new card'
+              editCard={onAddNewHandler}
+              closeModal={onCloseModalHandler}
+              />}
+        </div>
+        Okay!!
+
+      </div>
     </div>
   )
 })

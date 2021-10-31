@@ -26,13 +26,12 @@ export const Input: React.FC<SuperInputTextPropsType> = React.memo((props) => {
         onKeyPressEnter,
         ...restProps
     } = props;
-    const [searchValue, setSearchValue] = useState<string>("")
 
-    const onChangeCallback = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.currentTarget.value);
-        //@ts-ignore
-        onKeyPressEnter(searchValue.trim())
-    }, [onKeyPressEnter, searchValue]);
+    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
+        onChange // если есть пропс onChange
+            && onChange(e) // то передать ему е (поскольку onChange не обязателен)
+        onChangeText && onChangeText(e.currentTarget.value)
+    }
 
     const onKeyPreesCallback = (e: KeyboardEvent<HTMLInputElement>) => {
         onKeyPress && onKeyPress(e) && onEnter && e.key === 'Enter' && onEnter()
