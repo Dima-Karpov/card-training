@@ -1,0 +1,10 @@
+.rating {
+	flex-grow: 1;
+	background-color: #ffffff;
+	color: #21268f;
+	font-size: 12px;
+}
+
+.rating span {
+	padding: 1px;
+}
