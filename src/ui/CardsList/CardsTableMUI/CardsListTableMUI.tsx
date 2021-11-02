@@ -129,4 +129,4 @@ export const CardsListTabelMUI: React.FC<CardsListTableMUIPropsType> = React.mem
       </Table>
     </TableContainer>
   )
-})
+});
