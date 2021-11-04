@@ -59,7 +59,7 @@ export const Login: React.FC = React.memo(() => {
         return <Redirect to={PATH.PROFILE}/>
     }
 
-    console.log('login - isLoggedIn',isLoggedIn)
+    console.log('login - isLoggedIn',isLoggedIn);
 
     return (
         <div className={s.container}>
