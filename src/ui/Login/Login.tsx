@@ -77,7 +77,6 @@ export const Login: React.FC = React.memo(() => {
                         placeholder='Password'
                         {...formik.getFieldProps('password')}
                     />
-
                     <span className={s.showHidePassword}
                         onClick={showHide}>{typeIcon === 'text' ? '🔒' : '🔑'}</span>
 
@@ -94,7 +93,6 @@ export const Login: React.FC = React.memo(() => {
                     <form onSubmit={formik.handleSubmit}>
                         <Button name='Login' type={'submit'} className={styleButton.button} />
                     </form>
-                    
                     <div style={{ color: 'gray' }}>
                         Dont't have an account?
                         <NavLink to={PATH.SIGN_UP} className={s.singLink}>Sing Up</NavLink>
