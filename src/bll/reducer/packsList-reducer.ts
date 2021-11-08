@@ -28,7 +28,6 @@ const initialState = {
 };
 type InitialStateType = typeof initialState;
 
-
 export const packsListReducer = (state: InitialStateType = initialState, action: AppActionsType): InitialStateType => {
     switch (action.type)
     {
