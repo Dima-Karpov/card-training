@@ -62,8 +62,6 @@ export const Routes: React.FC = React.memo(() => {
   const isLoggedIn = useSelector<AppStoreType, boolean>(state => state.auth.isLoggedIn);
   const { pathname } = useLocation();
 
-  console.log(pathname)
-  console.log('Routs - isLoggedIn', isLoggedIn)
 
   return (
 
