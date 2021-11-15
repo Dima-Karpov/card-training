@@ -24,7 +24,6 @@ export const registrationReducer = (state: InitialStateType = initialState, acti
 
 //action
 export const registerUser = (isRegistered: boolean) => ({ type: 'registretion/REGISTER-USER', isRegistered } as const);
-
 // thunks
 export const registerUserTC = (email: string, password: string): AppThunk => async (dispatch) => {
     try{
