@@ -54,8 +54,6 @@ export const setAppStatusAC = (status: RequestStatusType) => ({ type: 'app/SET-A
 export const setHeaderMenuStatus = (headerMenuStatus: HeaderMenuStatusType) => ({type: 'app/SET-HEADER-MENU-STATUS', headerMenuStatus} as const);
 export const setUserData = (userData: UserDataType) => ({type: 'app/SET-USER-DATA', userData} as const);
 export const setAppError = (error: string | null) => ({type: 'app/SET-ERROR', error} as const);
-//thunk
-
 
 
 export type AppAT = ReturnType<typeof setAppStatusAC> 
